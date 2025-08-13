@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Teacher extends Employee {
-
+    @Column
     private String subject;
 
     @Column(name = "is_professor")

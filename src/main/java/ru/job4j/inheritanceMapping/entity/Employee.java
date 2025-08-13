@@ -1,24 +1,26 @@
 package ru.job4j.inheritancemapping.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @NoArgsConstructor
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "emp_type")
 public abstract class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column
     private String name;
+    @Column
     private int salary;
+    @Column
     private double experience;
 
-    public Employee(String name, int salary, double experience) {
+    protected Employee(String name, int salary, double experience) {
         this.name = name;
         this.salary = salary;
         this.experience = experience;

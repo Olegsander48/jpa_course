@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Driver extends Employee {
+    @Column
     private char category;
 
     @Column(name = "car_brand")
