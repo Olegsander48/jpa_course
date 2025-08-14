@@ -2,12 +2,14 @@ package ru.job4j.inheritancemapping.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @NoArgsConstructor
+@Table(name = "drivers")
 public class Driver extends Employee {
     @Column
     private char category;
