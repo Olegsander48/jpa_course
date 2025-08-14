@@ -20,10 +20,14 @@ public class Employee {
 
     @ElementCollection
     @CollectionTable(name = "emp_friends", joinColumns = @JoinColumn(name = "emp_id"))
-    @Column(name = "friend_name")
-    List<String> friends;
+            @AttributeOverrides({
+                    @AttributeOverride(name = "name", column = @Column(name = "emp_name")),
+                    @AttributeOverride(name = "surname", column = @Column(name = "emp_surname")),
+                    @AttributeOverride(name = "age", column = @Column(name = "emp_age"))
+            })
+    List<Friend> friends;
 
-    public Employee(String firstName, int salary, double experience, List<String> friends) {
+    public Employee(String firstName, int salary, double experience, List<Friend> friends) {
         this.firstName = firstName;
         this.salary = salary;
         this.experience = experience;
