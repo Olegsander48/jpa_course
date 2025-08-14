@@ -5,6 +5,9 @@
              https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
 
     <persistence-unit name="jpa-course">
+        <class>ru.job4j.advancedmapping.entity.Address</class>
+        <class>ru.job4j.advancedmapping.entity.Employee</class>
+
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver" />
             <property name="jakarta.persistence.jdbc.url"    value="jdbc:postgresql://localhost:5432/jpa" />
@@ -16,6 +19,7 @@
             <property name="hibernate.format_sql" value="true" />
 
             <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="hibernate.archive.autodetection" value="none"/>
         </properties>
     </persistence-unit>
 </persistence>
