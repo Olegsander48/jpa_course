@@ -18,10 +18,16 @@ public class PersistenceContextMain {
             entityManager.persist(teacher1);
             entityManager.persist(teacher2);
 
-            entityManager.find(Teacher.class, 10);
-            entityManager.find(Teacher.class, 10);
+            teacher1.setSubject("Physic"); //all in 1 query-update
+            teacher1.setProfessor(true);
 
             transaction.commit();
+            transaction.begin();
+            //empty transaction load all differences to DB
+            transaction.commit();
+
+            System.out.println(entityManager.find(Teacher.class, teacher1.getId()));
+            System.out.println(entityManager.find(Teacher.class, teacher1.getId()));
         } catch (Exception ex) {
             if (transaction.isActive()) {
                 transaction.rollback();
