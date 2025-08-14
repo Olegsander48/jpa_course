@@ -3,6 +3,7 @@ package ru.job4j.advancedmapping.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.List;
 
 @Entity
 @Data
@@ -17,17 +18,15 @@ public class Employee {
     private int salary;
     private double experience;
 
-    @Embedded
-    @AttributeOverrides({
-            @AttributeOverride(name = "country", column = @Column(name = "emp_country")),
-            @AttributeOverride(name = "city", column = @Column(name = "emp_city"))
-    })
-    private Address address;
+    @ElementCollection
+    @CollectionTable(name = "emp_friends", joinColumns = @JoinColumn(name = "emp_id"))
+    @Column(name = "friend_name")
+    List<String> friends;
 
-    public Employee(String firstName, int salary, double experience, Address address) {
+    public Employee(String firstName, int salary, double experience, List<String> friends) {
         this.firstName = firstName;
         this.salary = salary;
         this.experience = experience;
-        this.address = address;
+        this.friends = friends;
     }
 }
