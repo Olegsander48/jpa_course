@@ -18,12 +18,8 @@ public class PersistenceContextMain {
             entityManager.persist(teacher1);
             entityManager.persist(teacher2);
 
-            teacher1.setSubject("Physic");
-
-            Teacher teacher3 = entityManager.find(Teacher.class, 100);
-            teacher3.setSubject("Math");
-
-            teacher2.setSubject("Chemistry");
+            entityManager.find(Teacher.class, 10);
+            entityManager.find(Teacher.class, 10);
 
             transaction.commit();
         } catch (Exception ex) {
