@@ -12,17 +12,25 @@ public class PersistenceContextMain {
         try {
             transaction.begin();
 
-            Teacher teacher = new Teacher("Natalia", "Balunova", "Math", false);
-            entityManager.persist(teacher);
+            Teacher teacher1 = new Teacher("Natalia", "Balunova", "Math", false);
+            Teacher teacher2 = new Teacher("Elena", "Temnikova", "English", false);
 
-            teacher = entityManager.find(Teacher.class, 1);
-            entityManager.remove(teacher);
+            entityManager.persist(teacher1);
+            entityManager.persist(teacher2);
+
+            teacher1.setSubject("Physic");
+
+            Teacher teacher3 = entityManager.find(Teacher.class, 100);
+            teacher3.setSubject("Math");
+
+            teacher2.setSubject("Chemistry");
 
             transaction.commit();
         } catch (Exception ex) {
             if (transaction.isActive()) {
                 transaction.rollback();
             }
+            ex.printStackTrace();
         } finally {
             entityManager.close();
         }
