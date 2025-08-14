@@ -2,7 +2,6 @@ package ru.job4j.inheritancemapping;
 
 import jakarta.persistence.*;
 import ru.job4j.inheritancemapping.entity.Driver;
-import ru.job4j.inheritancemapping.entity.Employee;
 import ru.job4j.inheritancemapping.entity.Teacher;
 
 import java.util.List;
@@ -20,10 +19,6 @@ public class Main {
             Driver driver = new Driver("Peter", 2000, 5, 'B', "Volkswagen");
             em.persist(teacher);
             em.persist(driver);
-
-            Query query = em.createQuery("select e from Employee e");
-            List<Employee> employees = query.getResultList();
-            System.out.println(employees);
 
             Query query2 = em.createQuery("select driver from Driver driver");
             List<Driver> drivers = query2.getResultList();
