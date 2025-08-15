@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "teachers")
 @Data
 @NoArgsConstructor
+@Cacheable
 public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

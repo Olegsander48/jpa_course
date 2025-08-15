@@ -12,19 +12,15 @@ public class PersistenceContextMain {
         try {
             transaction.begin();
             Teacher teacher1 = entityManager.find(Teacher.class, 1);
-            transaction.commit();
+            System.out.println(teacher1);
             entityManager.close();
 
-            teacher1.setName("VASILIY");
-
-            entityManager = entityManagerFactory.createEntityManager();
-            transaction = entityManager.getTransaction();
-            transaction.begin();
-
-            Teacher mergedTeacher = entityManager.merge(teacher1);
-            System.out.println(mergedTeacher);
+            EntityManager entityManager2 = entityManagerFactory.createEntityManager();
+            Teacher teacher2 = entityManager2.find(Teacher.class, 1);
+            System.out.println(teacher2);
 
             transaction.commit();
+            entityManager2.close();
         } catch (Exception ex) {
             if (transaction.isActive()) {
                 transaction.rollback();
