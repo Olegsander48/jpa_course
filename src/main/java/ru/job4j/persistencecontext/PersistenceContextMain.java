@@ -13,13 +13,16 @@ public class PersistenceContextMain {
             transaction.begin();
 
 /*            Teacher teacher1 = new Teacher("Natalia", "Balunova", "Math", false);
-            entityManager.persist(teacher1);*/
+            Teacher teacher2 = new Teacher("Natalia", "Balunova", "Math", false);
+            entityManager.persist(teacher1);
+            entityManager.persist(teacher2);*/
 
             Teacher teacher1 = entityManager.find(Teacher.class, 1);
-            teacher1.setName("Jerry");
-            teacher1.setProfessor(true);
+            Teacher teacher2 = entityManager.find(Teacher.class, 2);
+            entityManager.clear();
 
-            entityManager.refresh(teacher1); //rewrite uncommited changes
+            teacher1.setProfessor(true); //nothing will change
+            teacher2.setProfessor(true);
 
             transaction.commit();
         } catch (Exception ex) {
