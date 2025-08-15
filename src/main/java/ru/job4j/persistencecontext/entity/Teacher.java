@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @Table(name = "teachers")
 @Data
 @NoArgsConstructor
-@Cacheable
 public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,4 +25,40 @@ public class Teacher {
         this.subject = subject;
         this.isProfessor = isProfessor;
     }
+
+    @PrePersist
+    void prePersist() {
+        System.out.println("@Pre-Persist");
+    }
+
+    @PostPersist
+    void postPersist() {
+        System.out.println("@Post-Persist");
+    }
+
+    @PreUpdate
+    void preUpdate() {
+        System.out.println("@Pre-Update");
+    }
+
+    @PostUpdate
+    void postUpdate() {
+        System.out.println("@Post-Update");
+    }
+
+    @PreRemove
+    void preRemove() {
+        System.out.println("@Pre-Remove");
+    }
+
+    @PostRemove
+    void postRemove() {
+        System.out.println("@Post-Remove");
+    }
+
+    @PostLoad
+    void postLoad() {
+        System.out.println("@Post-Load");
+    }
+
 }
