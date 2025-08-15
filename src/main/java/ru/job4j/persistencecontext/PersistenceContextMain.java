@@ -11,18 +11,18 @@ public class PersistenceContextMain {
 
         try {
             transaction.begin();
-
-/*            Teacher teacher1 = new Teacher("Natalia", "Balunova", "Math", false);
-            Teacher teacher2 = new Teacher("Natalia", "Balunova", "Math", false);
-            entityManager.persist(teacher1);
-            entityManager.persist(teacher2);*/
-
             Teacher teacher1 = entityManager.find(Teacher.class, 1);
-            Teacher teacher2 = entityManager.find(Teacher.class, 2);
-            entityManager.clear();
+            transaction.commit();
+            entityManager.close();
 
-            teacher1.setProfessor(true); //nothing will change
-            teacher2.setProfessor(true);
+            teacher1.setName("VASILIY");
+
+            entityManager = entityManagerFactory.createEntityManager();
+            transaction = entityManager.getTransaction();
+            transaction.begin();
+
+            Teacher mergedTeacher = entityManager.merge(teacher1);
+            System.out.println(mergedTeacher);
 
             transaction.commit();
         } catch (Exception ex) {
