@@ -16,12 +16,10 @@ public class PersistenceContextMain {
             entityManager.persist(teacher1);*/
 
             Teacher teacher1 = entityManager.find(Teacher.class, 1);
+            teacher1.setName("Jerry");
+            teacher1.setProfessor(true);
 
-            System.out.println(entityManager.contains(teacher1));
-            entityManager.detach(teacher1);
-            System.out.println(entityManager.contains(teacher1));
-
-            teacher1.setName("Jerry"); //nothing changed in DB
+            entityManager.refresh(teacher1); //rewrite uncommited changes
 
             transaction.commit();
         } catch (Exception ex) {
@@ -31,6 +29,7 @@ public class PersistenceContextMain {
             ex.printStackTrace();
         } finally {
             entityManager.close();
+            entityManagerFactory.close();
         }
     }
 }
