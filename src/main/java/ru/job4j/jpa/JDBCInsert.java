@@ -2,10 +2,7 @@ package ru.job4j.jpa;
 
 import ru.job4j.jpa.entity.Student;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class JDBCInsert {
     static String dbUrl = "jdbc:postgresql://localhost:5432/jpa";
@@ -14,15 +11,14 @@ public class JDBCInsert {
 
     public static void main(String[] args) {
         try(Connection connection = DriverManager.getConnection(dbUrl, user, password)) {
-            Student student = new Student("John", "Doe", 9.1);
+            Student student = new Student("Vladimir", "Haff", 5.5);
 
-            PreparedStatement statement = connection.prepareStatement(
-                    "INSERT INTO students(name, surname, avg_grade) VALUES (?, ?, ?)");
-            statement.setString(1, student.getName());
-            statement.setString(2, student.getSurname());
-            statement.setDouble(3, student.getAvgGrade());
-            statement.executeUpdate();
-
+            Statement statement = connection.createStatement();
+            String sqlQuery = "INSERT INTO students(name, surname, avg_grade) VALUES " +
+                    "('" + student.getName() + "', '" +
+                    student.getSurname() +  "', " +
+                    student.getAvgGrade() + ");";
+            statement.executeUpdate(sqlQuery);
             statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
