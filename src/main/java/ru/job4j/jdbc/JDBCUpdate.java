@@ -1,4 +1,4 @@
-package ru.job4j.jpa;
+package ru.job4j.jdbc;
 
 import java.sql.*;
 import java.util.Scanner;

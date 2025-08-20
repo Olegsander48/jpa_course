@@ -1,7 +1,6 @@
-package ru.job4j.jpa;
+package ru.job4j.jdbc;
 
-import ru.job4j.jpa.entity.Student;
-
+import ru.job4j.jdbc.entity.Student;
 import java.sql.*;
 
 public class JDBCInsert {

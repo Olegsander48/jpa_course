@@ -1,4 +1,4 @@
-package ru.job4j.jpa.entity;
+package ru.job4j.jdbc.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
