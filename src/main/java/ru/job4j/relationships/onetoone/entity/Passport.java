@@ -18,14 +18,15 @@ public class Passport {
     private int height;
 
     @Column(name = "eye_color")
-    private String eyeColor;
+    @Enumerated(EnumType.STRING) //change type from int to varchar
+    private EyeColor eyeColor; //Enum stores in db like smallint
 
     @OneToOne(mappedBy = "passport",
               cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @ToString.Exclude
     private Student student;
 
-    public Passport(String email, int height, String eyeColor) {
+    public Passport(String email, int height, EyeColor eyeColor) {
         this.email = email;
         this.height = height;
         this.eyeColor = eyeColor;
