@@ -9,7 +9,7 @@ public class JDBCUpdate {
     static String password = "password";
 
     public static void main(String[] args) {
-        try(Connection connection = DriverManager.getConnection(dbUrl, user, password)) {
+        try (Connection connection = DriverManager.getConnection(dbUrl, user, password)) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Enter student name: ");
             String enteredName = scanner.nextLine();

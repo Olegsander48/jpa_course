@@ -9,7 +9,7 @@ public class JDBCInsert {
     static String password = "password";
 
     public static void main(String[] args) {
-        try(Connection connection = DriverManager.getConnection(dbUrl, user, password)) {
+        try (Connection connection = DriverManager.getConnection(dbUrl, user, password)) {
             Student student = new Student("Glev", "Newwel", 8.8);
 
             PreparedStatement statement = connection.prepareStatement(

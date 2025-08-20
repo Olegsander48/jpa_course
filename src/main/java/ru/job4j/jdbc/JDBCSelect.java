@@ -11,13 +11,13 @@ public class JDBCSelect {
     static String password = "password";
 
     public static void main(String[] args) {
-        try(Connection connection = DriverManager.getConnection(dbUrl, user, password)) {
+        try (Connection connection = DriverManager.getConnection(dbUrl, user, password)) {
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "SELECT * FROM students WHERE avg_grade > ?"
             );
             preparedStatement.setDouble(1, 9.0);
             ResultSet resultSet = preparedStatement.executeQuery();
-            List<Student> students = new ArrayList<Student>();
+            List<Student> students = new ArrayList<>();
             while (resultSet.next()) {
                 Student student = new Student();
                 student.setId(resultSet.getInt("id"));

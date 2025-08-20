@@ -5,7 +5,8 @@
              https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
 
     <persistence-unit name="jpa-course">
-        <class>ru.job4j.crud.entity.Student</class>
+        <class>ru.job4j.relationships.onetoone.entity.Student</class>
+        <class>ru.job4j.relationships.onetoone.entity.Passport</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver" />
