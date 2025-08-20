@@ -19,8 +19,8 @@ public class Student {
     @Column(name = "avg_grade")
     private double avgGrade;
 
-    @OneToOne
-    @JoinColumn(name = "passport_id") //column in students table, foreign key
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "passport_id")    //column in students table, foreign key
     private Passport passport;
 
     public Student(String name, String surname, double avgGrade) {

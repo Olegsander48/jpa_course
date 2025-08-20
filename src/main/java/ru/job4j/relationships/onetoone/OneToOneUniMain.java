@@ -4,7 +4,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
-import ru.job4j.relationships.onetoone.entity.Passport;
 import ru.job4j.relationships.onetoone.entity.Student;
 
 public class OneToOneUniMain {
@@ -16,11 +15,14 @@ public class OneToOneUniMain {
         try {
             transaction.begin();
 
-            Student student = new Student("Aleksey", "Vaskov", 5.5);
-            Passport passport = new Passport("aleksey@gmail.com", 179, "blue");
+/*            Student student = new Student("Serena", "Abu", 9.7);
+            Passport passport = new Passport("serena@gmail.com", 156, "black");
             student.setPassport(passport);
-            entityManager.persist(passport);
-            entityManager.persist(student);
+            entityManager.persist(student);*/
+
+            Student student = entityManager.find(Student.class, 1);
+            System.out.println(student);
+            entityManager.remove(student); //also delete it's passport
 
             transaction.commit();
         } catch (Exception e) {
