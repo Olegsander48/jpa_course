@@ -24,6 +24,7 @@ public class University {
 
     @OneToMany(cascade = CascadeType.PERSIST,
                mappedBy = "university")
+    @OrderBy("avgGrade desc")
     private List<Student> students;
 
     public University(String name, Date foundingDate) {

@@ -3,6 +3,7 @@ package ru.job4j.relationships.onetomany.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
@@ -21,6 +22,7 @@ public class Student {
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "university_id")
+    @ToString.Exclude
     private University university;
 
     public Student(String name, String surname, double avgGrade) {
