@@ -22,8 +22,8 @@ public class University {
     @Column(name = "founding_date")
     private Date foundingDate;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "university_id")
+    @OneToMany(cascade = CascadeType.PERSIST,
+               mappedBy = "university")
     private List<Student> students;
 
     public University(String name, Date foundingDate) {
@@ -34,5 +34,6 @@ public class University {
 
     public void addStudent(Student student) {
         students.add(student);
+        student.setUniversity(this); //set current university to student
     }
 }

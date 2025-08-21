@@ -19,6 +19,10 @@ public class Student {
     @Column(name = "avg_grade")
     private double avgGrade;
 
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "university_id")
+    private University university;
+
     public Student(String name, String surname, double avgGrade) {
         this.name = name;
         this.surname = surname;
