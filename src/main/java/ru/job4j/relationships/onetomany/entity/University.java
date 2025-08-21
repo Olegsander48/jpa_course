@@ -22,7 +22,7 @@ public class University {
     @Column(name = "founding_date")
     private Date foundingDate;
 
-    @OneToMany(mappedBy = "university", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "university", cascade = CascadeType.PERSIST)
     private List<Student> students;
 
     public University(String name, Date foundingDate) {
