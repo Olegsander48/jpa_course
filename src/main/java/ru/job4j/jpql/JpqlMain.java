@@ -30,6 +30,22 @@ public class JpqlMain {
             double average = query3.getSingleResult();
             System.out.println(average);
 
+            //index parameters
+            TypedQuery<Student> query4 = em.createQuery("select s from Student s where s.name like ?1 and s.avgGrade > ?2", Student.class);
+            query4.setParameter(1, "%l%");
+            query4.setParameter(2, 8.5);
+            query4.getResultList().forEach(System.out::println);
+
+            //named parameters
+            TypedQuery<Student> query5 = em.createQuery("select s from Student s where s.name like :letter and s.avgGrade > :grade", Student.class);
+            query5.setParameter("letter", "%l%");
+            query5.setParameter("grade", 8.5);
+            query5.getResultList().forEach(System.out::println);
+
+            //update values
+            Query query6 = em.createQuery("update Student set avgGrade = 7.0 where length(surname) > 6");
+            query6.executeUpdate();
+
             transaction.commit();
         } catch (Exception e) {
             if (transaction.isActive()) {
