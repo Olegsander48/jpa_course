@@ -13,6 +13,11 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Table(name = "universities")
+@NamedQueries(
+        {@NamedQuery(name = "University.allUniversitiesLessOrEqualToTwo",
+                query = "select u from University u where size(u.students) <= 2"),
+        @NamedQuery(name = "University.studentsWithAvgGradeBetween",
+                query = "select s from Student s where avgGrade between :from and :to")})
 public class University {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
