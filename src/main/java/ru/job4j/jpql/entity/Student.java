@@ -17,7 +17,7 @@ public class Student {
     private String surname;
 
     @Column(name = "avg_grade")
-    private double avgGrade;
+    private Double avgGrade;
 
     public Student(String name, String surname, double avgGrade) {
         this.name = name;
