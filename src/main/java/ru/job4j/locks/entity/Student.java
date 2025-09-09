@@ -2,10 +2,12 @@ package ru.job4j.locks.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "students")
 @Data
+@NoArgsConstructor
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
