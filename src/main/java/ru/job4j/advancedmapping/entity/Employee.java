@@ -19,12 +19,8 @@ public class Employee {
     private double experience;
 
     @ElementCollection
-    @CollectionTable(name = "emp_friends", joinColumns = @JoinColumn(name = "emp_id"))
-            @AttributeOverrides({
-                    @AttributeOverride(name = "name", column = @Column(name = "emp_name")),
-                    @AttributeOverride(name = "surname", column = @Column(name = "emp_surname")),
-                    @AttributeOverride(name = "age", column = @Column(name = "emp_age"))
-            })
+    @CollectionTable(name = "emp_friend", joinColumns = @JoinColumn(name = "friend_employee_id"))
+    @Column(name = "employees_friends")
     List<Friend> friends;
 
     public Employee(String firstName, int salary, double experience, List<Friend> friends) {
