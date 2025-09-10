@@ -29,8 +29,9 @@ public class NPlusOneProblemMain {
             entityManager.persist(university1);
             entityManager.persist(university2);
             entityManager.persist(university3);*/
-            Query query = entityManager.createQuery("from Student s join fetch s.university");
-            query.getResultList().forEach(student -> System.out.println(((Student) student).getUniversity().getName()));
+
+            Query query = entityManager.createQuery("FROM University");
+            query.getResultList().forEach(System.out::println);
 
             transaction.commit();
         } catch (Exception e) {

@@ -3,6 +3,7 @@ package ru.job4j.relationships.onetomany.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.BatchSize;
 
 import java.util.ArrayList;
 import java.sql.Date;
@@ -23,6 +24,7 @@ public class University {
     private Date foundingDate;
 
     @OneToMany(mappedBy = "university", cascade = CascadeType.PERSIST)
+    @BatchSize(size = 10)
     private List<Student> students;
 
     public University(String name, Date foundingDate) {

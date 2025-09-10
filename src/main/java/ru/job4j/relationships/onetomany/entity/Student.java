@@ -20,7 +20,7 @@ public class Student {
     @Column(name = "avg_grade")
     private double avgGrade;
 
-    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "university_id")
     @ToString.Exclude
     private University university;
