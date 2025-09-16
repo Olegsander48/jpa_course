@@ -3,6 +3,7 @@ package ru.job4j.nplus1problem.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.BatchSize;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class University {
     private String name;
 
     @OneToMany(mappedBy = "university")
+    @BatchSize(size = 2)
     private List<Student> students;
 
     public University(String name) {
